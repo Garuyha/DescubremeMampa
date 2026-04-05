@@ -1,0 +1,1 @@
+D:\Program Files\Repositorios\DescubremeMampa\Descubreme\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\2l6d4e3t\obj\arm64-v8a

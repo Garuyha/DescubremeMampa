@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private Question currentQuestion;
 
     public Button[] answerButtons;
-    public Image questionImage;
+    public Image questionImage, lupitaImage;
     public TextMeshProUGUI questionText;
     public Sprite corretAnswer, incorrectAnswer;
 
@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         // Asignar los textos de las respuestas a los botones de la escena
         questionImage.sprite = currentQuestion.questionImage;
         questionText.text = currentQuestion.questionText;
+        lupitaImage.gameObject.SetActive(false);
+        questionImage.gameObject.SetActive(true);
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -78,11 +80,14 @@ public class GameManager : MonoBehaviour
         Debug.Log(isCorrect ? "Respuesta correcta" : "Respuesta incorrecta");
         if (isCorrect)
         {
-            questionImage.sprite = corretAnswer;
+            lupitaImage.sprite = corretAnswer;
         }
-        else {             questionImage.sprite = incorrectAnswer;
+        else {             
+            lupitaImage.sprite = incorrectAnswer;
         }
 
+        lupitaImage.gameObject.SetActive(true);
+        questionImage.gameObject.SetActive(false);
         SetAnswerButtonsInteractable(false);
         StartCoroutine(FeedbackAndNext());
     }
