@@ -1,12 +1,23 @@
 # ninja log v5
-121	494	7971225478950367	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9742d859b15f4e66
-495	628	7971225480054671	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libswappywrapper.so	23d44737627dc20e
-103	1046	7971225483302683	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	f09c006e7018b360
-99	1058	7971225483312727	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c506b2b3d606a573
-0	1066	7971225483473693	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	61186845c079786b
-113	1073	7971225484604847	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	205dccc1cf53b00b
-96	1083	7971225484604847	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a22e76382fa466bf
-108	1121	7971225485145822	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	aec0ae5b93edf460
-91	1302	7971225486379502	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bb959a6f3387f9ac
-117	1370	7971225487154149	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	773816d0a1ad74a2
-1370	1516	7971225489148917	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libgame.so	cb267d6f449689d4
+127	214	7975655813097097	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9742d859b15f4e66
+3	944	7975655820114714	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bb959a6f3387f9ac
+118	884	7975655819717667	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	aec0ae5b93edf460
+215	378	7975655814463085	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libswappywrapper.so	23d44737627dc20e
+106	678	7975655817688739	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	f09c006e7018b360
+101	693	7975655817860029	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c506b2b3d606a573
+104	759	7975655817950472	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	61186845c079786b
+98	778	7975655818186894	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a22e76382fa466bf
+113	772	7975655818141629	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	205dccc1cf53b00b
+122	836	7975655818951865	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	773816d0a1ad74a2
+944	1038	7975655821333655	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libgame.so	cb267d6f449689d4
+105	609	7979121162836575	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9742d859b15f4e66
+609	1356	7979121169754453	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libswappywrapper.so	23d44737627dc20e
+98	2017	7979121176876273	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	f09c006e7018b360
+82	2089	7979121177098035	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c506b2b3d606a573
+91	2229	7979121177108070	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	205dccc1cf53b00b
+85	2294	7979121177265671	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	61186845c079786b
+88	2333	7979121177791182	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	a22e76382fa466bf
+3	2353	7979121179241487	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bb959a6f3387f9ac
+94	2361	7979121179221451	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	aec0ae5b93edf460
+101	2871	7979121185080015	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	773816d0a1ad74a2
+2871	3166	7979121188394956	D:/Program Files/Repositorios/DescubremeMampa/Descubreme/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2l6d4e3t/obj/arm64-v8a/libgame.so	cb267d6f449689d4

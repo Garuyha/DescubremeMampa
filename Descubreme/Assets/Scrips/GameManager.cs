@@ -1,9 +1,10 @@
-using UnityEngine;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class GameManager : MonoBehaviour
     private Question currentQuestion;
 
     public Button[] answerButtons;
-    public Image questionImage, lupitaImage;
+    public Image questionImage, lupitaImage, victoryImage, defeatImage;
     public TextMeshProUGUI questionText;
     public Sprite corretAnswer, incorrectAnswer;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip correctSound, incorrectSound;
+    private int puntaje, preguntasRealizadas, bandIndexRta, realIndex;
 
     private void Start()
     {
@@ -24,13 +28,38 @@ public class GameManager : MonoBehaviour
         }
 
         GetRandomQuestion();
+        puntaje = 0;
+        preguntasRealizadas = 0;
     }
 
     void GetRandomQuestion()
     {
-        int randomQuestionIndex = Random.Range(0, unansweredQuestions.Count);
-        currentQuestion = unansweredQuestions[randomQuestionIndex];
-        GetAnswerInfo();
+        if (unansweredQuestions == null || unansweredQuestions.Count == 0)
+        {
+            if (puntaje == 10)
+                victoryImage.gameObject.SetActive(true);
+            else
+                defeatImage.gameObject.SetActive(true);
+
+            return;
+        }
+
+        if (preguntasRealizadas < 10)
+        {
+            preguntasRealizadas++;
+
+            int randomQuestionIndex = UnityEngine.Random.Range(0, unansweredQuestions.Count);
+            currentQuestion = unansweredQuestions[randomQuestionIndex];
+
+            GetAnswerInfo();
+        }
+        else
+        {
+            if (puntaje >= 6)
+                victoryImage.gameObject.SetActive(true);
+            else
+                defeatImage.gameObject.SetActive(true);
+        }
     }
 
     void GetAnswerInfo()
@@ -41,25 +70,42 @@ public class GameManager : MonoBehaviour
         lupitaImage.gameObject.SetActive(false);
         questionImage.gameObject.SetActive(true);
 
+        int[] indices = Enumerable.Range(0, currentQuestion.answer.Length).ToArray();
+
+        // Shuffle (Fisher-Yates)
+        for (int i = indices.Length - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            int temp = indices[i];
+            indices[i] = indices[j];
+            indices[j] = temp;
+        }
+
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            // Si existe respuesta para este índice, se asigna texto y listener
             if (currentQuestion != null && i < currentQuestion.answer.Length)
             {
-                var answer = currentQuestion.answer[i];
+                int randomIndex = indices[i]; // â† clave
+                var answer = currentQuestion.answer[randomIndex];
+                if (currentQuestion.answer[randomIndex].isCorrect)
+                    bandIndexRta = i;
 
                 var textComp = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
+
                 if (textComp != null)
                     textComp.text = answer.answersText;
 
                 answerButtons[i].interactable = true;
                 answerButtons[i].onClick.RemoveAllListeners();
-                int index = i; // captura segura para el closure
+
+                int index = randomIndex; // importante usar el random
                 answerButtons[i].onClick.AddListener(() => OnAnswerSelected(index));
+
+                answerButtons[i].GetComponent<Image>().color = Color.white;
             }
-            else // Si no hay respuesta para el botón, se limpia y desactiva
+            else
             {
-                var textComp = answerButtons[i].GetComponentInChildren<Text>();
+                var textComp = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
                 if (textComp != null)
                     textComp.text = string.Empty;
 
@@ -70,7 +116,23 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Maneja la selección de una respuesta (puedes ampliar la lógica aquí)
+    // Maneja la selecciÃ³n de una respuesta (puedes ampliar la lÃ³gica aquÃ­)
+    public void GetRealIntButton0()
+    {
+        realIndex = 0;
+    }
+    public void GetRealIntButton1()
+    {
+        realIndex = 1;
+    }
+    public void GetRealIntButton2()
+    {
+        realIndex = 2;
+    }
+    public void GetRealIntButton3()
+    {
+        realIndex = 3;
+    }
     void OnAnswerSelected(int index)
     {
         if (currentQuestion == null || index < 0 || index >= currentQuestion.answer.Length)
@@ -81,10 +143,22 @@ public class GameManager : MonoBehaviour
         if (isCorrect)
         {
             lupitaImage.sprite = corretAnswer;
+            questionText.text = "Â¡CORRECTO!";
+            audioSource.PlayOneShot(correctSound);
+            puntaje++;
         }
         else {             
             lupitaImage.sprite = incorrectAnswer;
+            questionText.text = "Â¡INCORRECTO!";
+            audioSource.PlayOneShot(incorrectSound);
+            answerButtons[realIndex].GetComponent<Image>().color = Color.red;
         }
+        for(int i = 0; i < answerButtons.Length; i++)
+        {
+            if (answerButtons[i] != null)
+                answerButtons[i].interactable = false;
+        }
+        answerButtons[bandIndexRta].GetComponent<Image>().color = Color.green;
 
         lupitaImage.gameObject.SetActive(true);
         questionImage.gameObject.SetActive(false);
@@ -94,18 +168,19 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FeedbackAndNext()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
         unansweredQuestions.Remove(currentQuestion);
         GetRandomQuestion();
 
     }
-
     void SetAnswerButtonsInteractable(bool value)
     {
         for (int i = 0; i < answerButtons.Length; i++)
         {
             if (answerButtons[i] != null)
+            {
                 answerButtons[i].interactable = value;
+            }
         }
     }
 }
