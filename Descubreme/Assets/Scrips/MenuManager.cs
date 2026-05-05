@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel, menuOp, lupitaTech;
+    
+
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu principal - Scene");
@@ -11,7 +14,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Jugar - Scene");
+        StartCoroutine(FeedbackAndNext());
     }
 
     public void Exit()
@@ -31,5 +34,11 @@ public class MenuManager : MonoBehaviour
         menuPanel.SetActive(false);
         menuOp.SetActive(false);
         lupitaTech.SetActive(false);
+    }
+    IEnumerator FeedbackAndNext()
+    {
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene("Jugar - Scene");
+
     }
 }
